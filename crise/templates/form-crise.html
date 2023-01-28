@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+
+{% block conteudo %}
+
+<div class="container">
+    {% if messages %}
+            <br>
+            {% for message in messages %}
+                <div class='alert {{message.tags}} col-md-3'>
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+    <div class="form">
+        <h1>Cadastro de Crise</h1> 
+
+        <form method="POST" > {% csrf_token %}
+               {% comment %}
+                     {{form.as_p}}
+                {% endcomment %}
+                <div class="form-group">
+
+                    {{ form.nota_alerta.errors }} <!-- EXIBE ERRROS DE VALIDAÇÃO CASO OCORRA! -->
+                    <label>Crise:</label>
+                    {{ form.nota_alerta  }}
+                </div>
+                    <br>
+                <div class="form-group">
+                    {{ form.horario_acontecimento.errors }} <!-- EXIBE ERRROS DE VALIDAÇÃO CASO OCORRA! -->
+                    <label>Horário do acontecimento:</label>
+                    {{ form.horario_acontecimento }}
+                </div>
+                    <br>
+                <div class="form-group">
+                    {{ form.horario_superou_crise.errors }} <!-- EXIBE ERRROS DE VALIDAÇÃO CASO OCORRA! -->
+                    <label>Horário que superou:</label>
+                    {{ form.horario_superou_crise }}
+                </div>
+
+             
+              
+
+                <br>
+            <div>
+                <input type="submit" name="" id="" class='btn btn-secondary' value='CADASTRAR'>
+            </div>
+            
+        </form>
+        <br>
+        <a href="{% url 'crise'%}">
+
+            <button class='btn btn-secondary'>VOLTAR</button>
+    
+        </a>
+    </div>
+</div>
+
+{% endblock conteudo %}

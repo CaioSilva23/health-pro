@@ -1,0 +1,46 @@
+{% extends 'base_plataforma.html' %}
+{% load static %}
+
+{% block plataforma %}
+<div class="col-md-12 ">
+  <div class="modelo">
+    <h3>ULTIMAS AVALIAÇÕES</h3>
+    {% if messages %}
+    <br>
+    {% for message in messages %}
+        <div class='alert {{message.tags}} col-md-3'>
+            {{message}}
+        </div>
+    {% endfor %}
+    {% endif %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th >SITUAÇÃO</th>
+            <th >ANOTAÇẼOS POSITIVAS</th>
+            <th >ANOTAÇÕES NEGATIVAS</th>
+            <th>AÇÕES</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in avaliacoes%}
+          <tr>
+            <td>{{i.get_rating_display}}</td>
+            <td>{{i.anotacao_positiva}}</td>
+            <td>{{i.anotacao_negativa}}</td>
+
+            <td>
+              <a href="{% url 'editar_avaliacao' i.id%}">Editar</a>
+              <a href="{% url 'deletar_avaliacao' i.id%}">Deletar</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <a href="{% url 'cadastro_avaliacao'%}" class='btn btn-secondary'>NOVA AVALIAÇÃO</a>
+    
+      </table>
+    
+  </div>
+
+
+  {% endblock plataforma %}

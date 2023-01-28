@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+
+{% block conteudo %}
+
+<div class="container">
+    {% if messages %}
+            <br>
+            {% for message in messages %}
+                <div class='alert {{message.tags}} col-md-3'>
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+    <div class="form">
+        <h1>Formulário</h1> 
+
+        <form method="POST" > {% csrf_token %}
+               {% comment %}
+                     {{form.as_p}}
+                {% endcomment %}
+                <div class="form-group">
+
+                    {{ form.rating.errors }} <!-- EXIBE ERRROS DE VALIDAÇÃO CASO OCORRA! -->
+                    <label>Situacão:</label>
+                    {{ form.rating  }}
+                </div>
+                    <br>
+                <div class="form-group">
+                    {{ form.anotacao_positiva.errors }} <!-- EXIBE ERRROS DE VALIDAÇÃO CASO OCORRA! -->
+                    <label>Avaliação positiva:</label>
+                    {{ form.anotacao_positiva }}
+                </div>
+                    <br>
+                <div class="form-group">
+                    {{ form.anotacao_negativa.errors }} <!-- EXIBE ERRROS DE VALIDAÇÃO CASO OCORRA! -->
+                    <label>Avaliação negativa:</label>
+                    {{ form.anotacao_negativa }}
+                </div>
+
+             
+              
+
+                <br>
+            <div>
+                <input type="submit" name="" id="" class='btn btn-secondary' value='CADASTRAR'>
+            </div>
+            
+        </form>
+        <br>
+        <a href="{% url 'home'%}">
+
+            <button class='btn btn-secondary'>VOLTAR</button>
+    
+        </a>
+    </div>
+</div>
+
+{% endblock conteudo %}

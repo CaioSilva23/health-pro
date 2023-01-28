@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+
+{% block conteudo %}
+
+<div class="container">
+    {% if messages %}
+            <br>
+            {% for message in messages %}
+                <div class='alert {{message.tags}} col-md-3'>
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+    <div class="form">
+        <h1>Cadastre novos contatos</h1> 
+
+        <form method="POST" > {% csrf_token %}
+               {% comment %}
+                     {{form.as_p}}
+                {% endcomment %}
+                <div class="form-group">
+
+                    {{ form.nome.errors }} <!-- EXIBE ERRROS DE VALIDAÇÃO CASO OCORRA! -->
+                    <label>Nome:</label>
+                    {{ form.nome  }}
+                </div>
+                    <br>
+                <div class="form-group">
+                    {{ form.celular.errors }} <!-- EXIBE ERRROS DE VALIDAÇÃO CASO OCORRA! -->
+                    <label>Contato:</label>
+                    {{ form.celular }}
+                </div>
+                    <br>
+                <div class="form-group">
+                    {{ form.email.errors }} <!-- EXIBE ERRROS DE VALIDAÇÃO CASO OCORRA! -->
+                    <label>Email</label>
+                    {{ form.email }}
+                </div>
+
+             
+              
+
+                <br>
+            <div>
+                <input type="submit" name="" id="" class='btn btn-secondary' value='CADASTRAR'>
+            </div>
+            
+        </form>
+        <br>
+        <a href="{% url 'contatos'%}">
+
+            <button class='btn btn-secondary'>VOLTAR</button>
+    
+        </a>
+    </div>
+</div>
+
+{% endblock conteudo %}

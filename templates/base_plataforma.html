@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block titulo %}HEALTH-PRO{% endblock titulo %}
+
+
+{% block head %}{% endblock head %}
+
+{% block conteudo %}
+
+<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 260px;">
+  <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <span class="fs-4">HEALTH PRO</span>
+  </a>
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <a href="{% url 'home'%}" class="nav-link text-white" aria-current="page">
+        Avaliação
+      </a>
+    </li>
+    <li>
+      <a href="{% url 'crise'%}" class="nav-link text-white">
+        Alerta Crise
+      </a>
+    </li>
+    <li>
+      <a href="{% url 'contatos'%}" class="nav-link text-white">
+        Contatos
+      </a>
+    </li>
+    
+    
+  </ul>
+  <hr>
+  
+</div>
+
+<div class="b-example-vr"></div>
+
+   
+{% block plataforma %}{% endblock plataforma %}
+
+ 
+
+</div>
+
+
+
+{% endblock conteudo %}

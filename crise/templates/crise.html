@@ -1,0 +1,55 @@
+{% extends 'base_plataforma.html' %}
+
+{% block titulo %}HEALTH-PRO{% endblock titulo %}
+
+
+{% block head %}{% endblock head %}
+
+{% block plataforma %}
+
+<div class="col-md-12 ">
+  <div class="modelo">
+    <h3>ALERTA DE CRISE</h3>
+    {% if messages %}
+    <br>
+    {% for message in messages %}
+        <div class='alert {{message.tags}} col-md-3'>
+            {{message}}
+        </div>
+    {% endfor %}
+    {% endif %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th >CRISE</th>
+            <th >HORA DO ACONTENCIMENTO</th>
+            <th >HORA QUE SUPEROU </th>
+            <th>AÇÕES</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in crises%}
+          <tr>
+            <td>{{i.get_nota_alerta_display}}</td>
+            <td>{{i.horario_acontecimento}}</td>
+            <td>{{i.horario_superou_crise}}</td>
+
+            <td>
+              <a href="{% url 'editar_crise' i.id%}">Editar</a>
+              <a href="{% url 'deletar_crise' i.id%}">Deletar</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <a style='margin-left: 2px' href="{% url 'cadastro_crise'%}" class='btn btn-secondary'>CASTRAR CRISE</a>
+        <a style='margin-left: 5px' href="{% url 'envia_smss'%}" class='btn btn-secondary'>PEDIR AJUDA</a>
+
+    
+      </table>
+  </div>
+   
+
+</div>
+
+
+{% endblock plataforma %}
