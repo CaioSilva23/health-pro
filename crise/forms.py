@@ -15,8 +15,8 @@ class FormContato(forms.ModelForm):
         }
         
         
-class DateInput(forms.DateInput):
-    input_type = 'date'
+#class DateInput(forms.DateInput):
+  #  input_type = 'date'
 
 
 class FormAlertasCrise(forms.ModelForm):
@@ -25,8 +25,8 @@ class FormAlertasCrise(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'horario_acontecimento': DateInput( attrs={'type': 'date'}, format='%Y-%m-%d'),
-            'horario_superou_crise': DateInput( attrs={'type': 'date'}, format='%Y-%m-%d')
+            'horario_acontecimento': forms.TimeInput( attrs={'type': 'time', 'step':"2", 'class': 'form-control'}),
+            'horario_superou_crise': forms.TimeInput( attrs={'type': 'time', 'step':"2", 'class': 'form-control'})
         }
 
 
