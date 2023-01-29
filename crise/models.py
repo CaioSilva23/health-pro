@@ -21,3 +21,5 @@ class AlertasCrise(models.Model):
     horario_acontecimento = models.DateTimeField()
     horario_superou_crise = models.DateTimeField()
     
+    def __str__(self) -> str:
+        return self.nota_alerta

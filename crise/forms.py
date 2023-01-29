@@ -25,8 +25,8 @@ class FormAlertasCrise(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'horario_acontecimento': DateInput(),
-            'horario_superou_crise': DateInput()
+            'horario_acontecimento': DateInput( attrs={'type': 'date'}, format='%Y-%m-%d'),
+            'horario_superou_crise': DateInput( attrs={'type': 'date'}, format='%Y-%m-%d')
         }
 
 

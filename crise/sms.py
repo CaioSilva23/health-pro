@@ -4,6 +4,7 @@ from twilio.rest import Client
 # and set the environment variables. See http://twil.io/secure
 
 def envia_sms(contato):
+
     account_sid = config('TWILIO_ACCOUNT_SID')
     auth_token = config('TWILIO_AUTH_TOKEN')
     client = Client(account_sid, auth_token)
@@ -16,5 +17,4 @@ def envia_sms(contato):
         body='PRECISO DE AJUDA',
         to=destino
     )
-
-    print(message.sid)
+    
