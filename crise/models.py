@@ -18,8 +18,11 @@ class AlertasCrise(models.Model):
     )
     nota_alerta = models.CharField(max_length=1, choices=RATING_CHOICES)
 
-    horario_acontecimento = models.TimeField()
-    horario_superou_crise = models.TimeField()
+    horario_acontecimento = models.DateTimeField()
+    horario_superou_crise = models.DateTimeField()
     
     def __str__(self) -> str:
         return self.nota_alerta
+    
+    class Meta:
+        verbose_name_plural = 'Registro de crises'
